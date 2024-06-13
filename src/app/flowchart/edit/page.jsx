@@ -6,6 +6,7 @@ import React, {
   useCallback,
   useMemo,
   useEffect,
+  Suspense,
 } from "react";
 import ReactFlow, {
   Controls,
@@ -280,6 +281,7 @@ function EditFlowchart() {
   }
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="flex flex-grow-1 h-100 w-100 md:flex-row flex-col ">
       <ReactFlowProvider>
         <div className="h-screen w-screen" ref={reactFlowWrapper}>
@@ -305,6 +307,7 @@ function EditFlowchart() {
         <EditDragNodes clearCache={clearCache} year={year} degree={degree} />
       </ReactFlowProvider>
     </div>
+  </Suspense>
   );
 }
 
